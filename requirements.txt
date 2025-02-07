@@ -1,0 +1,6 @@
+kurigram
+python-dotenv
+google-generativeai
+colorama
+python-decouple
+tgcrypto
