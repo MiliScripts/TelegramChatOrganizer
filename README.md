@@ -11,13 +11,11 @@ Markdown
 ┗ 📂clean-telegram
 ┣ 📜bot.py
 ┣ 📜session.py
-┗ 📜telegram_organizer.py
 
 ## Description
 
 *   `bot.py`: A Pyrogram bot that uses Gemini AI to categorize Telegram chats and organize them into folders.
 *   `session.py`: A script to generate a Pyrogram session string for authentication.
-*   `telegram_organizer.py`: A command-line tool to organize your Telegram chats into folders using the Pyrogram library and Google's Gemini AI.
 
 ## Prerequisites
 
@@ -82,36 +80,6 @@ This script provides a Telegram bot that organizes your chats.
 
     Start a private chat with your bot on Telegram and send the `/get` command. The bot will fetch your dialogues, categorize them using Gemini AI, and organize them into folders.
 
-### `telegram_organizer.py`
-
-This script provides a command-line interface to organize your chats.
-
-1.  **Run the script:**
-
-    ```bash
-    python telegram_organizer.py --organize
-    ```
-
-    Alternatively, run without the `--organize` to review the setup.
-
-    ```bash
-    python telegram_organizer.py
-    ```
-
-    The script will prompt you to confirm before organizing the chats.
-
-## Detailed File Descriptions
-
-### `bot.py`
-
-This file contains the core logic for the Telegram bot.
-
-*   It uses the `pyrogram` library to interact with the Telegram API.
-*   It loads environment variables using the `dotenv` library.
-*   It configures the Gemini AI API using the `google.generativeai` library.
-*   It defines a command handler for the `/get` command, which fetches dialogues, categorizes them using Gemini AI, and organizes them into folders.
-*   It uses colorama for colored logging.
-
 ### `session.py`
 
 This file generates a session string for your Telegram account using the Pyrogram library.
@@ -119,17 +87,6 @@ This file generates a session string for your Telegram account using the Pyrogra
 *   It loads environment variables using the `dotenv` library.
 *   It creates a Pyrogram client in memory and exports the session string.
 *   It prints the session string to the console and sends it to your Telegram account.
-
-### `telegram_organizer.py`
-
-This file provides a command-line tool for organizing Telegram chats.
-
-*   It uses the `pyrogram` library to interact with the Telegram API.
-*   It loads environment variables using the `dotenv` library.
-*   It configures the Gemini AI API using the `google.generativeai` library.
-*   It fetches dialogues, categorizes them using Gemini AI, and organizes them into folders.
-*   It uses colorama for colored logging.
-*   It includes an argument parser for command-line options.
 
 ## Error Handling and Logging
 
@@ -145,6 +102,70 @@ The scripts include comprehensive error handling and logging using the `colorama
 ## Contributing
 
 Contributions to this project are welcome. Please submit a pull request with your changes.
+
+## توضیحات فارسی
+
+این پروژه ابزارهایی را برای سازماندهی چت‌های تلگرام شما در پوشه‌ها بر اساس موضوعات، چت‌های خصوصی و ربات‌ها ارائه می‌دهد. این پروژه از کتابخانه پایروگرام برای تعامل با API تلگرام و از Gemini AI گوگل برای دسته‌بندی چت‌ها بر اساس موضوع استفاده می‌کند.
+
+**نحوه استفاده:**
+
+*   **`bot.py`**: این اسکریپت یک ربات تلگرامی است که از Gemini AI برای دسته‌بندی چت‌های تلگرام و سازماندهی آنها در پوشه‌ها استفاده می‌کند. با اجرای این اسکریپت و ارسال دستور `/get` به ربات، چت‌های شما بر اساس موضوعات، چت‌های خصوصی و ربات‌ها دسته‌بندی و در پوشه‌های جداگانه قرار می‌گیرند.
+
+*   **`session.py`**:  این اسکریپت برای ایجاد یک رشته نشست (Session String) پایروگرام برای احراز هویت استفاده می‌شود.  این رشته برای دسترسی ربات به حساب تلگرام شما ضروری است. پس از اجرای این اسکریپت، رشته نشست در کنسول چاپ شده و به حساب تلگرام شما نیز ارسال می شود.
+
+**تنظیمات لازم:**
+
+قبل از استفاده از این پروژه، مطمئن شوید که موارد زیر را دارید:
+
+*   پایتون 3.6 یا بالاتر
+*   یک حساب تلگرام
+*   یک پروژه Google Cloud با فعال بودن API مربوط به Gemini AI و یک کلید API
+*   متغیرهای محیطی تنظیم شده برای API\_ID، API\_HASH، SESSION\_STRING و GEMINI\_API\_KEY
+
+**راه اندازی:**
+
+1.  **کپی کردن ریپازیتوری:**
+
+    ```bash
+    git clone <repository_url>
+    cd clean-telegram
+    ```
+
+2.  **نصب وابستگی‌ها:**
+
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+3.  **تنظیم متغیرهای محیطی:**
+
+    یک فایل `.env` در دایرکتوری ریشه پروژه ایجاد کنید و اطلاعات کاربری API تلگرام و کلید API مربوط به Gemini AI خود را اضافه کنید:
+
+    ```
+    API_ID=<شناسه_API_تلگرام_شما>
+    API_HASH=<هش_API_تلگرام_شما>
+    SESSION_STRING=<رشته_نشست_پایروگرام_شما>
+    GEMINI_API_KEY=<کلید_API_جمینی_شما>
+    ```
+
+    می‌توانید API\_ID و API\_HASH را از [ابزارهای توسعه API تلگرام](https://my.telegram.org/apps) دریافت کنید.
+
+    برای دریافت SESSION\_STRING از `session.py` استفاده کنید:
+
+    ```bash
+    python session.py
+    ```
+
+    رشته نشست تولید شده را از خروجی کنسول یا پیام‌های ذخیره شده تلگرام خود کپی کنید.
+
+    برای دریافت GEMINI\_API\_KEY، API مربوط به Gemini AI را در پروژه Google Cloud خود فعال کنید و یک کلید API ایجاد کنید.
+
+**محدودیت‌ها:**
+
+*   دقت دسته‌بندی چت‌ها به کیفیت مدل Gemini AI و اعلان (prompt) مورد استفاده بستگی دارد.
+*   تعداد پوشه‌های ایجاد شده به 7 محدود شده است تا از حداکثر مجاز پوشه‌های تلگرام فراتر نرود.
+*   محدودیت‌های نرخ اعمال شده توسط API تلگرام ممکن است بر عملکرد تأثیر بگذارد، به خصوص هنگام پردازش تعداد زیادی از گفتگوها.
+*   استفاده از API مربوط به Gemini AI تابع سیاست‌های قیمت‌گذاری و استفاده گوگل است.
 content_copy
 download
 Use code with caution.
