@@ -9,8 +9,8 @@ Use code with caution.
 Markdown
 
 ┗ 📂clean-telegram
-┣ 📜bot.py
-┣ 📜session.py
+* ┣ 📜bot.py
+* ┣ 📜session.py
 
 ## Description
 
